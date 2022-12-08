@@ -9,18 +9,26 @@
 <body>
     <h2>Привет! Это приложение - прогноз погоды для твоего города или может соседнего)</h2>
     <h2>Выбери нужные тебе города:
-        <select class="select" name="cityes" onchange="getWeather(value)">
+        <select class="select" name="cityes" onchange="checkCity(value)">
             <option selected disabled>Выберите город:</option>
-            <option value="https://api.open-meteo.com/v1/forecast?latitude=50.45&longitude=30.52&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin">Киев</option>
-            <option value="https://api.open-meteo.com/v1/forecast?latitude=49.98&longitude=36.25&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin">Харьков</option>
-            <option value="https://api.open-meteo.com/v1/forecast?latitude=49.84&longitude=24.02&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin">Львов</option>
-            <option value="https://api.open-meteo.com/v1/forecast?latitude=46.49&longitude=30.74&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin">Одесса</option>
-            <option value="https://api.open-meteo.com/v1/forecast?latitude=48.47&longitude=35.04&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin">Днепр</option>
-            <option value="https://api.open-meteo.com/v1/forecast?latitude=46.64&longitude=32.61&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin">Херсон</option>
-            <option value="https://api.open-meteo.com/v1/forecast?latitude=49.44&longitude=32.06&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin">Черкассы</option>
+            <option value="1">Киев</option>
+            <option value="2">Харьков</option>
+            <option value="3">Львов</option>
+            <option value="4">Одесса</option>
+            <option value="5">Днепр</option>
+            <option value="6">Херсон</option>
+            <option value="7">Черкассы</option>
         </select>
-        <button class="addAnotherOne" onclick="addOneMoreCity()">+</button>
     </h2>
+    <h2>Прогноз на 
+        <select id="count">
+            <option selected value="1">сегодня</option>
+            <option value="2">3 дня</option>
+            <option value="3">неделю</option>
+        </select>
+    </h2>
+        
+    
     <div class="mobile-table">
         <table id="CitiesTable">
             <thead>
