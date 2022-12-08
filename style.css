@@ -11,11 +11,7 @@ table#CitiesTable th{
     color:#ffffff;
     background-color:#354251;
 }
-table#CitiesTable td{
-    font-size:13px;
-    color:#354251;
-}
-table#CitiesTable td,table#CitiesTable th{
+table#CitiesTable th{
     white-space:pre-wrap;
     padding:10px 5px;
     line-height:13px;
@@ -34,41 +30,24 @@ table#CitiesTable tr:hover td{
     max-width: 100%;
     overflow-x: auto;
 }
-/*Popup*/
-.popup__bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0,0,0,0.5);
-    opacity: 0; // Скрываем фон и сам попап
-    pointer-events: none; // Запрещаем ему быть целью событий
-    transition: 0.5s all;
+#pinkRow td{
+    white-space:pre-wrap;
+    padding:10px 5px;
+    line-height:13px;
+    vertical-align: middle;
+    border: 2px solid #ff0099;
 }
-.popup__bg.active { // При добавлении класса 'active'
-    opacity: 1; // Показываем фон и попап
-    pointer-events: all; // Возвращаем события
-    transition: 0.5s all;
+#blackRow td{
+    white-space:pre-wrap;
+    padding:10px 5px;
+    line-height:13px;
+    vertical-align: middle;
+    border: 2px solid black;
 }
-.popup {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0); // Центрируем и масштабируем в 0 само окно
-    background: #fff;
-    width: 400px;
-    padding: 25px;
-    transition: 0.5s all;
-}
-
-.popup.active { // При добавлении класса 'active'
-    transform: translate(-50%, -50%) scale(1); // Так же центрируем и плавно увеличиваем
-    transition: 0.5s all;
-}
-.close-popup {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
+#redRow td{
+    white-space:pre-wrap;
+    padding:10px 5px;
+    line-height:13px;
+    vertical-align: middle;
+    border: 2px solid red;
 }
