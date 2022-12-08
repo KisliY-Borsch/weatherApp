@@ -13,11 +13,19 @@ function getWeather(a) {
     }
     let table = document.querySelector('#CitiesTableBody');
     let tr = document.createElement('tr');
-    let td =
+    let city = document.createElement('td');
+    let td1 = document.createElement('td');
+    let td2 = document.createElement('td');
+    let date = document.createElement('td');
 
-    table.innerHTML = "<td>" + array.daily.temperature_2m_max[0] + "</td>"
-    table.innerHTML = "<td>" + array.daily.temperature_2m_min[0] + "</td>"
-    table.innerHTML = "</tr>";
+    let adt = document.createTextNode(array.daily.temperature_2m_max[0]);
+    let bdt = document.createTextNode(array.daily.temperature_2m_max[0]);
+    let time = new Date();
+
+    td1.appendChild(adt);
+    td2.appendChild(bdt);
+
+    tr.appendChild(td1);
 }
 function addOneMoreCity(){
 
