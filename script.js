@@ -11,6 +11,14 @@ function getWeather(a) {
         // сохранить результат
         array = JSON.parse(xhr.responseText);
     }
-    console.log(array);
+    let table = document.querySelector('#CitiesTableBody');
+    let tr = document.createElement('tr');
+    let td =
+
+    table.innerHTML = "<td>" + array.daily.temperature_2m_max[0] + "</td>"
+    table.innerHTML = "<td>" + array.daily.temperature_2m_min[0] + "</td>"
+    table.innerHTML = "</tr>";
+}
+function addOneMoreCity(){
 
 }

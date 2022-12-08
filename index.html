@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>HappyMeteoApp</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
     <h2>Привет! Это приложение - прогноз погоды для твоего города или может соседнего)</h2>
-    <h2>Выбери свой город из списка:
+    <h2>Выбери нужные тебе города:
         <select class="select" name="cityes" onchange="getWeather(value)">
             <option selected disabled>Выберите город:</option>
             <option value="https://api.open-meteo.com/v1/forecast?latitude=50.45&longitude=30.52&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin">Киев</option>
@@ -18,7 +19,22 @@
             <option value="https://api.open-meteo.com/v1/forecast?latitude=46.64&longitude=32.61&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin">Херсон</option>
             <option value="https://api.open-meteo.com/v1/forecast?latitude=49.44&longitude=32.06&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin">Черкассы</option>
         </select>
-        <button class="addAnotherOne">+</button>
+        <button class="addAnotherOne" onclick="addOneMoreCity()">+</button>
     </h2>
+    <div class="mobile-table">
+        <table id="CitiesTable">
+            <thead>
+            <tr>
+                <th>Город</th>
+                <th>Максимальная температура сегодня</th>
+                <th>Минимальная температура сегодня</th>
+                <th>Время</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody id="CitiesTableBody">
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

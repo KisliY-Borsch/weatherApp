@@ -1,0 +1,36 @@
+/* Стили таблицы (CitiesTable) */
+table#CitiesTable{
+    text-decoration: none;
+    border-collapse:collapse;
+    width:100%;
+    text-align:center;
+}
+table#CitiesTable th{
+    font-weight:normal;
+    font-size:14px;
+    color:#ffffff;
+    background-color:#354251;
+}
+table#CitiesTable td{
+    font-size:13px;
+    color:#354251;
+}
+table#CitiesTable td,table#CitiesTable th{
+    white-space:pre-wrap;
+    padding:10px 5px;
+    line-height:13px;
+    vertical-align: middle;
+    border: 1px solid #354251;
+}
+table#CitiesTable tr:hover{
+    background-color:#f9fafb
+}
+table#CitiesTable tr:hover td{
+    color:#354251;
+    cursor:pointer;
+}
+.mobile-table{
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+}
