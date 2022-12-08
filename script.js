@@ -90,9 +90,3 @@ function checkCity(x, count){
         getWeather("https://api.open-meteo.com/v1/forecast?latitude=49.44&longitude=32.06&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin", city, count);
     }
 }
-
-function delRow(){
-    alert("Yes!");
-}
-
-document.getElementById('deleteRowBtn').onclick = delRow();
