@@ -1,14 +1,24 @@
-//функция удаления строки
+/*функция удаления строки*/
 const delRow = (el) => {
     el.parentElement.remove();
 }
 
-//функция показа детальной погоды
-function detailWeather(){
-    console.log("Yep!");
+/*функция показа детальной погоды (Popup по-сути)*/
+function detailWeather() {
+    var modal = document.getElementById("my_modal");
+    var span = document.getElementsByClassName("close_modal_window")[0];
+    modal.style.display = "block";
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 }
 
-//копипаста для всех 3 вариантов (a-функция показа детальной погоды, b-row.id)
+/*копипаста для всех 3 вариантов (a-функция показа детальной погоды, b-row.id)*/
 function copyPaste(ax,bx,c,a,b){
     let tbody = document.getElementById("CitiesTable").getElementsByTagName("tbody")[0];
     let row = document.createElement("tr");
@@ -41,7 +51,7 @@ function copyPaste(ax,bx,c,a,b){
     tbody.appendChild(row);
 }
 
-//узнаем дату и время прямо сейчас
+/*узнаем дату и время прямо сейчас*/
 function checkDate(){
     let td4 = document.createElement("td");
     Data = new Date();
@@ -54,24 +64,24 @@ function checkDate(){
     return date;
 }
 
-//Создает ряды в таблице (a-макс темп, b-мин темп, c-город) для погоды на СУТКИ!
+/*Создает ряды в таблице (a-макс темп, b-мин темп, c-город) для погоды на СУТКИ!*/
 function addRow(a, b, c){
     copyPaste("","blackRow",c,a,b);
 }
 
-//логика карточек (a-массив из 3 макс темп, b-массив из 3 мин темп, c-город) для погоды на ТРОЕ СУТОК!
+/*логика карточек (a-массив из 3 макс темп, b-массив из 3 мин темп, c-город) для погоды на ТРОЕ СУТОК!*/
 function addRowThree(a, b, c) {
     alert("Вы выбрали прогноз на 3 дня. Чтоб просмотреть все дни, кликните на нужную строку(она подсвечивается розовым цветом).");
     copyPaste("detailWeather();","pinkRow",c,a,b);
 }
 
-//логика карточек (a-массив из 7 макс темп, b-массив из 7 мин темп, c-город) для погоды на НЕДЕЛЮ!
+/*логика карточек (a-массив из 7 макс темп, b-массив из 7 мин темп, c-город) для погоды на НЕДЕЛЮ!*/
 function addRowWeek(a, b, c){
     alert("Вы выбрали прогноз на неделю. Чтоб просмотреть все дни, кликните на нужную строку(она подсвечивается красным цветом).");
     copyPaste("detailWeather();","redRow",c,a,b);
 }
 
-//Функция получения json по api (a-ссылка, b-город, c-сколько дней хочет человек узнать)
+/*Функция получения json по api (a-ссылка, b-город, c-сколько дней хочет человек узнать)*/
 function getWeather(a,b,c) {
     let array = {}; //тут у нас будет результат
     let xhr = new XMLHttpRequest();
@@ -100,7 +110,7 @@ function getWeather(a,b,c) {
     }
 }
 
-//проверяем какой город получаем и подставляем ссылку для получения json. Принимаем запрос на количество дней
+/*проверяем какой город получаем и подставляем ссылку для получения json. Принимаем запрос на количество дней*/
 function checkCity(x, count){
     var count = document.getElementById("count").value;
     if(x == 1){
@@ -126,9 +136,8 @@ function checkCity(x, count){
         getWeather("https://api.open-meteo.com/v1/forecast?latitude=49.44&longitude=32.06&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin", city, count);
     }
 }
-/**/
+/*сортировка*/
 document.addEventListener('DOMContentLoaded', () => {
-
     const getSort = ({ target }) => {
         const order = (target.dataset.order = -(target.dataset.order || -1));
         const index = [...target.parentNode.cells].indexOf(target);
@@ -137,14 +146,11 @@ document.addEventListener('DOMContentLoaded', () => {
             a.children[index].innerHTML,
             b.children[index].innerHTML
         );
-
         for(const tBody of target.closest('table').tBodies)
             tBody.append(...[...tBody.rows].sort(comparator(index, order)));
 
         for(const cell of target.parentNode.cells)
             cell.classList.toggle('sorted', cell === target);
     };
-
     document.querySelectorAll('.table_sort thead').forEach(tableTH => tableTH.addEventListener('click', () => getSort(event)));
-
 });

@@ -2,32 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>HappyMeteoApp</title>
+    <title>HappyWeather</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital@1&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h2>Привет! Это приложение - прогноз погоды для твоего города или может соседнего)</h2>
-    <h2>Выбери нужные тебе города:
-        <select class="select" name="cityes" onchange="checkCity(value)">
-            <option selected disabled>Выберите город:</option>
-            <option value="1">Киев</option>
-            <option value="2">Харьков</option>
-            <option value="3">Львов</option>
-            <option value="4">Одесса</option>
-            <option value="5">Днепр</option>
-            <option value="6">Херсон</option>
-            <option value="7">Черкассы</option>
-        </select>
-    </h2>
-    <h2>Прогноз на 
-        <select id="count">
-            <option selected value="1">сегодня</option>
-            <option value="2">3 дня</option>
-            <option value="3">неделю</option>
-        </select>
-    </h2>
-        
-    
+    <header>
+        <div id="my_modal" class="modal">
+            <div class="modal_content">
+                <span class="close_modal_window"></span>
+                    <table class="" id="">
+                        <thead>
+                        <tr>
+                            <th>Город</th>
+                            <th>Максимальная температура сегодня</th>
+                            <th>Минимальная температура сегодня</th>
+                            <th>Дата и время</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="">
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+        <a>Привет! Это приложение - прогноз погоды для твоего города или может соседнего)</a>
+        <a>Выбери нужные тебе города:
+            <select class="select" name="cityes" onchange="checkCity(value)">
+                <option selected disabled>Выберите город:</option>
+                <option value="1">Киев</option>
+                <option value="2">Харьков</option>
+                <option value="3">Львов</option>
+                <option value="4">Одесса</option>
+                <option value="5">Днепр</option>
+                <option value="6">Херсон</option>
+                <option value="7">Черкассы</option>
+            </select>
+        </a><br>
+        <a>Прогноз на
+            <select id="count">
+                <option selected value="1">сегодня</option>
+                <option value="2">3 дня</option>
+                <option value="3">неделю</option>
+            </select>
+        </a>
+    <header>
     <div class="mobile-table">
         <table class="table_sort" id="CitiesTable">
             <thead>

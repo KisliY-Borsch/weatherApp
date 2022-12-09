@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital@1&display=swap');
 /* Стили таблицы (CitiesTable) */
 table#CitiesTable{
     text-decoration: none;
@@ -6,8 +7,9 @@ table#CitiesTable{
     text-align:center;
 }
 table#CitiesTable th{
+    font-family: 'Balsamiq Sans', cursive;
     font-weight:normal;
-    font-size:14px;
+    font-size:16px;
     color:#ffffff;
     background-color:#354251;
 }
@@ -17,12 +19,12 @@ table#CitiesTable th{
     line-height:13px;
     vertical-align: middle;
     border: 1px solid #354251;
+    cursor:pointer;
 }
 table#CitiesTable tr:hover{
-    background-color:#f9fafb
+    backdrop-filter: blur(8px);
 }
 table#CitiesTable tr:hover td{
-    color:#354251;
     cursor:pointer;
 }
 .mobile-table{
@@ -50,4 +52,59 @@ table#CitiesTable tr:hover td{
     line-height:13px;
     vertical-align: middle;
     border: 2px solid red;
+}
+html, body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Balsamiq Sans', cursive;
+    background-image: url(images/1.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+a{
+    font-size:20px;
+}
+
+header{
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+/*Popup*/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 1000;
+}
+.modal .modal_content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    z-index: 99999;
+}
+.modal .modal_content .close_modal_window {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
 }
