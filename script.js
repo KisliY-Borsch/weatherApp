@@ -3,39 +3,25 @@ const delRow = (el) => {
     el.parentElement.remove();
 }
 
-//узнаем дату и время прямо сейчас
-function checkDate(){
-    let td4 = document.createElement("td");
-    Data = new Date();
-    Year = Data.getFullYear();
-    Month = Data.getMonth();
-    Day = Data.getDate();
-    Hour = Data.getHours();
-    Minutes = Data.getMinutes();
-    let date = "Time: "+Hour+':'+Minutes+', Today is '+Day+':'+Month+':'+Year ;
-    return date;
+//функция показа детальной погоды
+function detailWeather(){
+    console.log("Yep!");
 }
 
-//функция перебора наших мин и макс температур
-function checkArray(a, b){
-    for()
-}
-
-//Создает ряды в таблице (a-макс темп, b-мин темп, c-город) для погоды на СУТКИ!
-function addRow(a,b,c){
-    // создать ячейку в таблице
+//копипаста для всех 3 вариантов (a-функция показа детальной погоды, b-row.id)
+function copyPaste(ax,bx,c,a,b){
     let tbody = document.getElementById("CitiesTable").getElementsByTagName("tbody")[0];
     let row = document.createElement("tr");
-    row.id = 'blackRow';
-// создать 1 ячейку с названием города
+    row.setAttribute("onclick", ax);
+    row.id = bx;
     let td1 = document.createElement("td");
     td1.appendChild(document.createTextNode(c));
-// создать 2 ячейку в таблице
+    // создать 2 ячейку в таблице
     let td2 = document.createElement("td");
-    td2.appendChild(document.createTextNode(a + ' ℃'));
+    td2.appendChild(document.createTextNode(a[0] + ' ℃'));
 // создать 3 ячейку в таблице
     let td3 = document.createElement("td");
-    td3.appendChild(document.createTextNode(b + ' ℃'));
+    td3.appendChild(document.createTextNode(b[0] + ' ℃'));
 // создать 4 ячейку с датой
     let date = checkDate();
     let td4 = document.createElement("td");
@@ -55,31 +41,34 @@ function addRow(a,b,c){
     tbody.appendChild(row);
 }
 
+//узнаем дату и время прямо сейчас
+function checkDate(){
+    let td4 = document.createElement("td");
+    Data = new Date();
+    Year = Data.getFullYear();
+    Month = Data.getMonth();
+    Day = Data.getDate();
+    Hour = Data.getHours();
+    Minutes = Data.getMinutes();
+    let date = "Time: "+Hour+':'+Minutes+', Today is '+Day+':'+Month+':'+Year ;
+    return date;
+}
+
+//Создает ряды в таблице (a-макс темп, b-мин темп, c-город) для погоды на СУТКИ!
+function addRow(a, b, c){
+    copyPaste("","blackRow",c,a,b);
+}
+
 //логика карточек (a-массив из 3 макс темп, b-массив из 3 мин темп, c-город) для погоды на ТРОЕ СУТОК!
 function addRowThree(a, b, c) {
     alert("Вы выбрали прогноз на 3 дня. Чтоб просмотреть все дни, кликните на нужную строку(она подсвечивается розовым цветом).");
-    let tbody = document.getElementById("CitiesTable").getElementsByTagName("tbody")[0];
-    let row = document.createElement("tr");
-    row.setAttribute("onclick", "check3Days();");
-    row.id = 'pinkRow';
-    let td1 = document.createElement("td");
-    td1.id = 'cityName';
-    td1.appendChild(document.createTextNode(c));
-    row.appendChild(td1);
-    tbody.appendChild(row);
+    copyPaste("detailWeather();","pinkRow",c,a,b);
 }
 
 //логика карточек (a-массив из 7 макс темп, b-массив из 7 мин темп, c-город) для погоды на НЕДЕЛЮ!
 function addRowWeek(a, b, c){
     alert("Вы выбрали прогноз на неделю. Чтоб просмотреть все дни, кликните на нужную строку(она подсвечивается красным цветом).");
-    let tbody = document.getElementById("CitiesTable").getElementsByTagName("tbody")[0];
-    let row = document.createElement("tr");
-    row.id = 'redRow';
-    let td1 = document.createElement("td");
-    td1.id = 'cityName';
-    td1.appendChild(document.createTextNode(c));
-    row.appendChild(td1);
-    tbody.appendChild(row);
+    copyPaste("detailWeather();","redRow",c,a,b);
 }
 
 //Функция получения json по api (a-ссылка, b-город, c-сколько дней хочет человек узнать)
@@ -98,7 +87,7 @@ function getWeather(a,b,c) {
     //логика работы при прогнозах погоды на разное кол-во дней
     if(c == 1){
         //функция для создания таблицы на день
-        addRow(array.daily.temperature_2m_max[0], array.daily.temperature_2m_min[0], b); 
+        addRow(array.daily.temperature_2m_max, array.daily.temperature_2m_min, b);
     }else if(c == 2){
         //Обрезаю макс и мин темп до 3-х дней
         let arrMax = array.daily.temperature_2m_max.slice(0,3);
@@ -109,7 +98,6 @@ function getWeather(a,b,c) {
         //функция для создания таблицы на неделю
         addRowWeek(array.daily.temperature_2m_max, array.daily.temperature_2m_min, b);
     }
-    
 }
 
 //проверяем какой город получаем и подставляем ссылку для получения json. Принимаем запрос на количество дней
@@ -138,14 +126,3 @@ function checkCity(x, count){
         getWeather("https://api.open-meteo.com/v1/forecast?latitude=49.44&longitude=32.06&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin", city, count);
     }
 }
-
-
-
-// document.addEventListener('click', function(e){
-//     if(e.target.classList.contains('deleteRowBtn')){
-//         e.preventDefault();
-//         let tr = e.target.closest('tr');
-//         tr.remove();
-//         return !1;
-//     };
-// });
