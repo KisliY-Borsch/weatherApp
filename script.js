@@ -60,7 +60,7 @@ function checkDate(){
     Day = Data.getDate();
     Hour = Data.getHours();
     Minutes = Data.getMinutes();
-    let date = "Time: "+Hour+':'+Minutes+', Today is '+Day+':'+Month+':'+Year ;
+    let date = "Время сейчас: "+Hour+':'+Minutes+', Сегодня '+Day+':'+Month+':'+Year ;
     return date;
 }
 
@@ -114,25 +114,25 @@ function getWeather(a,b,c) {
 function checkCity(x, count){
     var count = document.getElementById("count").value;
     if(x == 1){
-        let city = "Kyiv";
+        let city = "Киев";
         getWeather("https://api.open-meteo.com/v1/forecast?latitude=50.45&longitude=30.52&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin", city, count);
     }else if(x == 2){
-        let city = "Kharkiv";
+        let city = "Харьков";
         getWeather("https://api.open-meteo.com/v1/forecast?latitude=49.98&longitude=36.25&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin", city, count);
     }else if(x == 3){
-        let city = "Lviv";
+        let city = "Львов";
         getWeather("https://api.open-meteo.com/v1/forecast?latitude=49.84&longitude=24.02&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin", city, count);
     }else if(x == 4){
-        let city = "Odesa";
+        let city = "Одесса";
         getWeather("https://api.open-meteo.com/v1/forecast?latitude=46.49&longitude=30.74&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin", city, count);
     }else if(x == 5){
-        let city = "Dnipro";
+        let city = "Днепр";
         getWeather("https://api.open-meteo.com/v1/forecast?latitude=48.47&longitude=35.04&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin", city, count);
     }else if(x == 6){
-        let city = "Kherson";
+        let city = "Херсон";
         getWeather("https://api.open-meteo.com/v1/forecast?latitude=46.64&longitude=32.61&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin", city, count);
     }else{
-        let city = "Cherkassy";
+        let city = "Черкассы";
         getWeather("https://api.open-meteo.com/v1/forecast?latitude=49.44&longitude=32.06&daily=temperature_2m_max,temperature_2m_min&timezone=Europe%2FBerlin", city, count);
     }
 }

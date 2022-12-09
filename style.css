@@ -24,8 +24,7 @@ table#CitiesTable th{
 table#CitiesTable tr:hover{
     backdrop-filter: blur(8px);
 }
-table#CitiesTable tr:hover td{
-    cursor:pointer;
+table#blackRow, tr:hover td{
 }
 .mobile-table{
     width: 100%;
@@ -80,6 +79,22 @@ header{
     -o-background-size: cover;
     background-size: cover;
 }
+.day {
+    border-radius:4px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    text-align:center;
+    padding:20px;
+    margin-bottom: 20px;
+    width:20%;
+}
+.day, #demo {
+    background-image: linear-gradient(141deg, #9fb8ad 0%, #6600FF 45%, #6600CC 75%);
+}
+.textName{
+    font-size:1.8em;
+    color:#e8ffe8;
+    text-shadow: 0 0 5px #070707;
+}
 /*Popup*/
 .modal {
     display: none;
@@ -94,6 +109,7 @@ header{
     z-index: 1000;
 }
 .modal .modal_content {
+    display: flex;
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
